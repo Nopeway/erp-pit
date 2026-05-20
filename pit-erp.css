@@ -1387,6 +1387,7 @@ nav {
   width: 290px;
   background: var(--bg-2);
   border: 1px solid var(--border-2);
+  text-align: center;
   border-radius: 14px; padding: 1.5rem 1.6rem;
   position: relative;
   transition: all 0.3s;
@@ -1398,8 +1399,8 @@ nav {
 }
 .org-card::before {
   content: ''; position: absolute;
-  top: -1px; left: 1.6rem; right: 1.6rem;
-  height: 2px;
+  top: -1px; left: 50%; transform: translateX(-50%);
+  width: 60%; height: 2px;
   background: var(--primary-hi);
   border-radius: 0 0 4px 4px;
 }
