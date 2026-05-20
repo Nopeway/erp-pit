@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERP Implementation — PT PIT Indonesia Teknika</title>
+<link rel="stylesheet" href="pit-erp.css">
+</head>
+<body>
+<div class="app">
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="brand">
+    <div class="brand-mark">P</div>
+    <div class="brand-text">
+      <div class="brand-name">PT PIT Indonesia Teknika</div>
+      <div class="brand-sub">ERP Implementation · Phase 1</div>
+    </div>
+  </div>
+  <nav>
+    <button class="nav-btn active" data-section="overview">Overview</button>
+    <button class="nav-btn" data-section="budget">Budget</button>
+    <button class="nav-btn" data-section="plan">Plan</button>
+    <button class="nav-btn" data-section="governance">Governance</button>
+    <button class="nav-btn" data-section="risk">Risk</button>
+    <button class="nav-btn" data-section="docs">Documents</button>
+  </nav>
+  <div class="header-meta">
+    <button class="print-btn" onclick="window.print()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+      Export PDF
+    </button>
+    <div class="status-pill">
+      <div class="status-dot"></div>
+      Pre Requirement-Gathering
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav">
+  <button class="nav-btn active" data-section="overview">Overview</button>
+  <button class="nav-btn" data-section="budget">Budget</button>
+  <button class="nav-btn" data-section="plan">Plan</button>
+  <button class="nav-btn" data-section="governance">Governance</button>
+  <button class="nav-btn" data-section="risk">Risk</button>
+  <button class="nav-btn" data-section="docs">Documents</button>
+</div>
+
+<!-- ===== OVERVIEW ===== -->
+<section id="overview" class="section active">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow primary">Project Roadmap · Mei 2026</span>
+      <h1 class="display-xl">Implementasi ERP <span class="italic-accent">PIT Indonesia Teknika</span></h1>
+      <p class="lead">Phase 1 hanya satu entitas(PIT) dari roadmap dua-entitas(PIT&SEA). Dokumen ini memaparkan rencana eksekusi atas Budget Maksimum yang telah disetujui BOD, dengan pendekatan inhouse yang memanfaatkan kapabilitas internal untuk efisiensi optimal dan governance yang disiplin di setiap milestone.</p>
+    </div>
+
+    <!-- Executive Summary -->
+    <div class="exec-hero">
+      <div class="exec-hero-top">
+        <div class="exec-hero-title">
+          <span class="eyebrow primary">Executive Summary</span>
+          <h2 class="title-lg" style="margin-top:0.6rem">Ringkasan Rencana Eksekusi</h2>
+        </div>
+        <div class="exec-doc-id">DOC-PIT-ERP-001 · v1.0</div>
+      </div>
+
+      <div class="exec-stats">
+        <div class="exec-stat">
+          <div class="exec-stat-label"><span class="marker"></span>Apa yang dibangun</div>
+          <div class="exec-stat-value">8<span class="unit">modul ERP</span></div>
+          <div class="exec-stat-desc">Odoo 18: Accounting, Inventory, Purchase, Sales, Employee, CRM, Field Service, Helpdesk</div>
+        </div>
+        <div class="exec-stat">
+          <div class="exec-stat-label amber"><span class="marker"></span>Budget Maksimum</div>
+          <div class="exec-stat-value">Rp 219,5<span class="unit">juta</span></div>
+          <div class="exec-stat-desc">Disetujui BOD · Dikelola PL · 60–70% saving dibanding vendor eksternal (Rp 1,5–2 M)</div>
+        </div>
+        <div class="exec-stat">
+          <div class="exec-stat-label violet"><span class="marker"></span>Kapan selesai</div>
+          <div class="exec-stat-value">10<span class="unit">bulan</span></div>
+          <div class="exec-stat-desc">3 fase, 5 milestone · Go-Live di bulan ke-10 dengan hypercare support</div>
+        </div>
+      </div>
+
+      <div class="exec-tldr">
+        <div class="exec-tldr-label">
+          <span class="quote">"</span>
+          <span>Ringkas</span>
+        </div>
+        <div class="exec-tldr-text">
+          Dokumen ini memaparkan rencana eksekusi atas <strong>Budget Maksimum Rp 219,5 Jt</strong> yang telah disetujui BOD untuk implementasi ERP PT PIT selama <strong>10 bulan</strong>. Sebagai <strong>Penanggung Jawab Budget</strong>, Project Leader bertanggung jawab penuh atas alokasi internal dan keberhasilan proyek dalam batas tersebut. Struktur biaya terdiri dari Layer 1 (Rp 134 Jt — infrastructure &amp; PL compensation), Layer 2 (Rp 65,5 Jt — dev resources &amp; license, alokasi disesuaikan post-RG), dan Dana Cadangan (Rp 20 Jt). Target efisiensi internal Rp 188,7 Jt — penghematan Rp 30,8 Jt direlokasi ke <strong>Innovation &amp; Development Fund</strong> untuk inisiatif improvement berkelanjutan. Governance dilengkapi 5 prinsip proyek, struktur otoritas yang jelas, dan SLA responsivitas yang mengikat.
+        </div>
+      </div>
+    </div>
+
+    <!-- Module Scope -->
+    <div class="section-divider">
+      <span class="label">01 · Modul Scope</span>
+      <span class="badge">Apa yang dibangun</span>
+      <div class="line"></div>
+    </div>
+
+    <div class="modules-section">
+      <div class="module-grid">
+        <div class="module-card">
+          <div class="module-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+          </div>
+          <div class="module-name">Accounting</div>
+          <div class="module-desc">Core finance</div>
+        </div>
+        <div class="module-card">
+          <div class="module-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <div class="module-name">Inventory</div>
+          <div class="module-desc">Stock control</div>
+        </div>
+        <div class="module-card">
+          <div class="module-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </div>
+          <div class="module-name">Purchase</div>
+          <div class="module-desc">Procurement</div>
+        </div>
+        <div class="module-card">
+          <div class="module-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="module-name">Sales</div>
+          <div class="module-desc">Order management</div>
+        </div>
+        <div class="module-card">
+          <div class="module-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <div class="module-name">Employee</div>
+          <div class="module-desc">HR management</div>
+        </div>
+        <div class="module-card">
+          <div class="module-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="module-name">CRM</div>
+          <div class="module-desc">Customer relations</div>
+        </div>
+        <div class="module-card">
+          <div class="module-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <div class="module-name">Field Service</div>
+          <div class="module-desc">On-site operations</div>
+        </div>
+        <div class="module-card">
+          <div class="module-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div class="module-name">Helpdesk</div>
+          <div class="module-desc">Support tickets</div>
+        </div>
+      </div>
+
+      <div class="modules-note">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <div>Modul aktual akan dikonfirmasi sesuai dengan hasil Requirement Gathering. Daftar di atas adalah baseline scope yang akan divalidasi di M1.</div>
+      </div>
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="section-divider">
+      <span class="label">02 · Key Metrics</span>
+      <span class="badge">Indikator utama</span>
+      <div class="line"></div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="kpi-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="kpi-label">Budget Maksimum</div>
+        <div class="kpi-value">Rp 219,5 <span class="unit">Jt</span></div>
+        <div class="kpi-sub">Disetujui BOD · Dikelola Penanggung Jawab Budget</div>
+      </div>
+      <div class="kpi violet">
+        <div class="kpi-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="kpi-label">Target Eksekusi</div>
+        <div class="kpi-value">Rp 188,7 <span class="unit">Jt</span></div>
+        <div class="kpi-sub">Penghematan Rp 30,8 Jt → I&amp;D Fund</div>
+      </div>
+      <div class="kpi amber">
+        <div class="kpi-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div class="kpi-label">vs Vendor Cost</div>
+        <div class="kpi-value">60–70 <span class="unit">%</span></div>
+        <div class="kpi-sub">Saving dibanding rate eksternal</div>
+      </div>
+      <div class="kpi sky">
+        <div class="kpi-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="kpi-label">Total Durasi</div>
+        <div class="kpi-value">10 <span class="unit">bulan</span></div>
+        <div class="kpi-sub">3 fase, 5 milestone</div>
+      </div>
+    </div>
+
+    <!-- Budget Architecture -->
+    <div class="section-divider">
+      <span class="label">03 · Budget Architecture</span>
+      <span class="badge">Struktur dua-layer</span>
+      <div class="line"></div>
+    </div>
+
+    <!-- Budget Donut Visualization -->
+    <div class="budget-viz">
+      <div class="donut-wrap">
+        <svg viewBox="0 0 200 200" width="280" height="280">
+          <!-- Background ring -->
+          <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(148, 163, 184, 0.06)" stroke-width="22"/>
+          
+          <!-- Layer 1 (134/219.5 = 61.05%) -->
+          <circle cx="100" cy="100" r="80" fill="none" 
+            stroke="url(#grad-primary)" stroke-width="22"
+            stroke-dasharray="306.84 502.65" stroke-dashoffset="0"
+            transform="rotate(-90 100 100)" stroke-linecap="round"/>
+          
+          <!-- Layer 2 (65.5/219.5 = 29.84%) - dashoffset = -307 -->
+          <circle cx="100" cy="100" r="80" fill="none"
+            stroke="url(#grad-amber)" stroke-width="22"
+            stroke-dasharray="150.0 502.65" stroke-dashoffset="-310"
+            transform="rotate(-90 100 100)" stroke-linecap="round"/>
+          
+          <!-- Contingency (20/219.5 = 9.11%) - dashoffset = -464 -->
+          <circle cx="100" cy="100" r="80" fill="none"
+            stroke="url(#grad-violet)" stroke-width="22"
+            stroke-dasharray="45.83 502.65" stroke-dashoffset="-464"
+            transform="rotate(-90 100 100)" stroke-linecap="round"/>
+
+          <defs>
+            <linearGradient id="grad-primary" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0%" stop-color="#34D399"/>
+              <stop offset="100%" stop-color="#10B981"/>
+            </linearGradient>
+            <linearGradient id="grad-amber" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0%" stop-color="#FBBF24"/>
+              <stop offset="100%" stop-color="#F59E0B"/>
+            </linearGradient>
+            <linearGradient id="grad-violet" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0%" stop-color="#A78BFA"/>
+              <stop offset="100%" stop-color="#8B5CF6"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="donut-center">
+          <div class="donut-center-label">Total Ceiling</div>
+          <div class="donut-center-value">Rp 219,5 Jt</div>
+          <div class="donut-center-meta">10 bulan implementasi</div>
+        </div>
+      </div>
+
+      <div class="budget-legend">
+        <div class="legend-item">
+          <div class="legend-marker" style="background:linear-gradient(135deg, #34D399, #10B981)"></div>
+          <div class="legend-info">
+            <div class="legend-name">Layer 1 — Pos Biaya Tetap</div>
+            <div class="legend-desc">Incentive PL + SWE Infrastructure</div>
+          </div>
+          <div class="legend-value">
+            <span class="num">Rp 134 Jt</span>
+            <span class="pct">61%</span>
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-marker" style="background:linear-gradient(135deg, #FBBF24, #F59E0B)"></div>
+          <div class="legend-info">
+            <div class="legend-name">Layer 2 — Pos Biaya Variabel</div>
+            <div class="legend-desc">Dev Resource + License · disesuaikan post-RG</div>
+          </div>
+          <div class="legend-value">
+            <span class="num">Rp 65,5 Jt</span>
+            <span class="pct">30%</span>
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-marker" style="background:linear-gradient(135deg, #A78BFA, #8B5CF6)"></div>
+          <div class="legend-info">
+            <div class="legend-name">Dana Cadangan (Contingency)</div>
+            <div class="legend-desc">Buffer kelolaan PL · realokasi ke I&amp;D Fund bila tidak terpakai</div>
+          </div>
+          <div class="legend-value">
+            <span class="num">Rp 20 Jt</span>
+            <span class="pct">9%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer Detail Cards -->
+    <div class="layer-grid">
+      <div class="layer-card">
+        <div class="layer-glow"></div>
+        <div class="layer-head">
+          <div>
+            <div class="layer-status"><span class="dot"></span>Layer 1 · Tetap</div>
+          </div>
+          <div class="layer-num">01</div>
+        </div>
+        <div class="layer-title">Infrastructure &amp; PL Compensation</div>
+        <div class="layer-amount">Rp 134 Jt</div>
+        <div class="layer-breakdown">Incentive PL · SWE Infrastructure</div>
+        
+        <div class="layer-list">
+          <div class="layer-list-item">
+            <span><strong>Incentive Project Leader</strong> kompensasi penugasan khusus dari BOD — total Rp 65 Jt (Rp 6,5–7,5 Jt/bulan, bervariasi per fase)</span>
+          </div>
+          <div class="layer-list-item">
+            <span><strong>SWE Infrastructure</strong> server, DevOps, dan development tools — total Rp 69 Jt (Rp 3–10 Jt/bulan, bervariasi per fase)</span>
+          </div>
+        </div>
+
+        <div class="layer-foot">
+          → Pos biaya tetap untuk infrastruktur &amp; compensation bulanan PL
+        </div>
+      </div>
+
+      <div class="layer-card amber">
+        <div class="layer-glow"></div>
+        <div class="layer-head">
+          <div>
+            <div class="layer-status"><span class="dot"></span>Layer 2 · Variabel</div>
+          </div>
+          <div class="layer-num">02</div>
+        </div>
+        <div class="layer-title">Dev Resource &amp; License</div>
+        <div class="layer-amount">Rp 65,5 Jt</div>
+        <div class="layer-breakdown">Development Resource · Odoo License</div>
+
+        <div class="layer-list">
+          <div class="layer-list-item">
+            <span><strong>Development Resource</strong> professional fee dengan engagement model fleksibel — total Rp 52 Jt</span>
+          </div>
+          <div class="layer-list-item">
+            <span><strong>Odoo License</strong> dev &amp; staging tier — total Rp 13,5 Jt</span>
+          </div>
+        </div>
+        
+        <div class="layer-foot">
+          → Alokasi disesuaikan berdasarkan hasil Requirement Gathering
+        </div>
+      </div>
+    </div>
+
+    <div class="contingency-card">
+      <div class="contingency-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="contingency-content">
+        <h3>Dana Cadangan (Contingency)</h3>
+        <p>Buffer ~9% dari total Budget Maksimum PIT, dikelola Project Leader sebagai Penanggung Jawab Budget. Digunakan untuk kondisi terdokumentasi yang di luar baseline scope. Bila tidak terpakai, dialihkan ke Innovation &amp; Development Fund untuk inisiatif improvement perusahaan.</p>
+      </div>
+      <div class="contingency-amount">
+        <div class="num">Rp 20 Jt</div>
+        <div class="label">Dana Cadangan</div>
+      </div>
+    </div>
+
+    <!-- Filosofi Pengelolaan Budget -->
+    <div class="section-divider">
+      <span class="label">04 · Filosofi Pengelolaan</span>
+      <span class="badge">Bagaimana budget dikelola</span>
+      <div class="line"></div>
+    </div>
+
+    <div class="philosophy">
+      <div class="philosophy-head">
+        <span class="eyebrow primary">Model Pengelolaan Budget Terpusat</span>
+        <h2 class="philosophy-title">Budget Maksimum dikelola sepenuhnya oleh Project Leader</h2>
+        <p class="philosophy-intro">
+          BOD menyerahkan pengelolaan penuh atas Budget Maksimum <strong>Rp 219,5 Jt</strong> kepada Project Leader sebagai <strong>Penanggung Jawab Budget</strong>. PL bertanggung jawab atas keberhasilan proyek dalam batas tersebut — termasuk pengelolaan Dana Cadangan (contingency). Model ini menyederhanakan governance dengan memberikan otoritas dan akuntabilitas pada satu titik tunggal.
+        </p>
+      </div>
+
+      <div class="philosophy-principles">
+        <div class="phil-principle">
+          <div class="phil-num">i</div>
+          <div class="phil-name">Akuntabilitas Tunggal</div>
+          <div class="phil-desc">Project Leader sebagai satu-satunya penanggung jawab atas Budget Maksimum, dengan otoritas penuh untuk mengalokasikan biaya antar komponen sesuai kebutuhan proyek.</div>
+        </div>
+        <div class="phil-principle violet">
+          <div class="phil-num">ii</div>
+          <div class="phil-name">Berorientasi Hasil</div>
+          <div class="phil-desc">Yang diukur adalah keberhasilan proyek dalam Budget Maksimum, bukan kepatuhan kaku per pos biaya. Optimasi internal diserahkan kepada PL selama hasil tercapai dan batas tidak terlewati.</div>
+        </div>
+        <div class="phil-principle amber">
+          <div class="phil-num">iii</div>
+          <div class="phil-name">Reinvestasi Penghematan</div>
+          <div class="phil-desc">Penghematan yang dihasilkan dari efisiensi pengelolaan direlokasi ke <strong>Innovation &amp; Development Fund</strong> untuk inisiatif improvement perusahaan dengan visibility penuh ke BOD.</div>
+        </div>
+      </div>
+
+      <div class="phil-consequences">
+        <div class="phil-consequences-label">Konsekuensi Pembagian Peran</div>
+        <div class="phil-role-grid">
+          <div class="phil-role">
+            <div class="phil-role-icon">BOD</div>
+            <div class="phil-role-text">
+              <strong>Mengawasi tingkat tinggi</strong>
+              Memantau progress dan tingkat penyerapan anggaran, tanpa perlu approval bertingkat per komponen biaya.
+            </div>
+          </div>
+          <div class="phil-role">
+            <div class="phil-role-icon amber">PL</div>
+            <div class="phil-role-text">
+              <strong>Otoritas + akuntabilitas penuh</strong>
+              Mengelola alokasi internal Budget Maksimum dengan tanggung jawab finansial yang setara.
+            </div>
+          </div>
+          <div class="phil-role">
+            <div class="phil-role-icon violet">TIM</div>
+            <div class="phil-role-text">
+              <strong>Stabilitas eksekusi</strong>
+              Bekerja tanpa interupsi proses persetujuan internal yang bertingkat — fokus pada deliverable.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BUDGET ===== -->
+<section id="budget" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow amber">Budget Maksimum · PT PIT</span>
+      <h1 class="display-xl">Rincian budget dengan <span class="italic-accent">skenario interaktif</span>.</h1>
+      <p class="lead">Switch antara Budget Maksimum dan Target Eksekusi untuk melihat dampak efisiensi internal. Budget Maksimum sudah disetujui BOD — Target Eksekusi adalah inisiatif efisiensi Project Leader yang penghematannya direlokasi ke Innovation &amp; Development Fund.</p>
+    </div>
+
+    <!-- Interactive Calculator -->
+    <div class="calculator">
+      <div class="calc-head">
+        <div>
+          <span class="eyebrow primary">Interactive Scenario</span>
+          <div class="calc-title" style="margin-top:0.5rem">Pilih skenario budget</div>
+        </div>
+        <div class="calc-toggle" id="scenarioToggle">
+          <button class="active" data-scenario="proposed">Budget Maksimum</button>
+          <button data-scenario="expected">Target Eksekusi ★</button>
+        </div>
+      </div>
+
+      <div class="calc-grid">
+        <div class="calc-card">
+          <div class="calc-card-label"><span class="marker"></span>Layer 1 — Tetap</div>
+          <div class="calc-card-value" id="calcLayer1">Rp 134.000.000</div>
+          <div class="calc-card-sub" id="calcLayer1Sub">Infrastructure &amp; PL Compensation · rata-rata Rp 13,4 Jt/bln</div>
+        </div>
+        <div class="calc-card amber">
+          <div class="calc-card-label"><span class="marker"></span>Layer 2 — Variabel</div>
+          <div class="calc-card-value" id="calcLayer2" style="color:var(--amber-hi)">Rp 65.500.000</div>
+          <div class="calc-card-sub">Dev Resource &amp; License · alokasi disesuaikan post-RG</div>
+        </div>
+      </div>
+
+      <div class="calc-equation">
+        <div class="calc-eq-item primary">
+          <div class="calc-eq-label">Layer 1+2</div>
+          <div class="calc-eq-value" id="calcSubtotal">199,5 Jt</div>
+        </div>
+        <div class="calc-eq-op">+</div>
+        <div class="calc-eq-item amber">
+          <div class="calc-eq-label">Dana Cadangan</div>
+          <div class="calc-eq-value" id="calcContingency">20 Jt</div>
+        </div>
+        <div class="calc-eq-op">=</div>
+        <div class="calc-eq-item total">
+          <div class="calc-eq-label">Total</div>
+          <div class="calc-eq-value" id="calcTotal">219,5 Jt</div>
+        </div>
+      </div>
+
+      <div class="calc-note">
+        ★ Target Eksekusi adalah inisiatif efisiensi Project Leader - bukan komitmen formal. Selisih dengan Budget Maksimum akan dialokasi sebagai Innovation &amp; Development Fund.
+      </div>
+    </div>
+
+    <!-- Component Breakdown Table -->
+    <div class="section-divider">
+      <span class="label">Breakdown Komponen Biaya</span>
+      <div class="line"></div>
+    </div>
+
+    <div class="breakdown">
+      <div class="breakdown-head">
+        <div>Komponen</div>
+        <div style="text-align:right" class="col-bln">Bulanan</div>
+        <div style="text-align:right">Durasi</div>
+        <div style="text-align:right">Total</div>
+      </div>
+
+      <div class="breakdown-row section-head">
+        <div class="bd-name strong section-name">Layer 1 — Pos Biaya Tetap</div>
+        <div class="bd-num col-bln">—</div>
+        <div class="bd-num">10 bulan</div>
+        <div class="bd-num lg" style="color:var(--primary-hi)">134.000.000</div>
+      </div>
+      <div class="breakdown-row">
+        <div>
+          <div class="bd-name">Incentive Project Leader</div>
+          <div class="bd-meta">Kompensasi penugasan khusus · variabel per fase (Rp 6,5–7,5 Jt/bln)</div>
+        </div>
+        <div class="bd-num col-bln">variabel</div>
+        <div class="bd-num">10 bln</div>
+        <div class="bd-num">65.000.000</div>
+      </div>
+      <div class="breakdown-row">
+        <div>
+          <div class="bd-name">SWE Infrastructure</div>
+          <div class="bd-meta">Server, DevOps, development tools · variabel per fase (Rp 3–10 Jt/bln)</div>
+        </div>
+        <div class="bd-num col-bln">variabel</div>
+        <div class="bd-num">10 bln</div>
+        <div class="bd-num">69.000.000</div>
+      </div>
+
+      <div class="breakdown-row section-head amber">
+        <div class="bd-name strong section-name amber">Layer 2 — Pos Biaya Variabel</div>
+        <div class="bd-num col-bln">—</div>
+        <div class="bd-num">M1–M10</div>
+        <div class="bd-num lg" style="color:var(--amber-hi)">65.500.000</div>
+      </div>
+      <div class="breakdown-row">
+        <div>
+          <div class="bd-name">Development Resource</div>
+          <div class="bd-meta">Professional fee · engagement model fleksibel · M1–M10</div>
+        </div>
+        <div class="bd-num col-bln">variabel</div>
+        <div class="bd-num">10 bln</div>
+        <div class="bd-num">52.000.000</div>
+      </div>
+      <div class="breakdown-row">
+        <div>
+          <div class="bd-name">Odoo License</div>
+          <div class="bd-meta">Dev &amp; staging tier · M2–M10</div>
+        </div>
+        <div class="bd-num col-bln">—</div>
+        <div class="bd-num">bertahap</div>
+        <div class="bd-num">13.500.000</div>
+      </div>
+
+      <div class="breakdown-row subtotal">
+        <div class="bd-name strong">Subtotal Layer 1 + Layer 2</div>
+        <div class="bd-num col-bln">—</div>
+        <div class="bd-num">—</div>
+        <div class="bd-num lg">199.500.000</div>
+      </div>
+
+      <div class="breakdown-row" style="background:rgba(139, 92, 246, 0.04)">
+        <div>
+          <div class="bd-name strong" style="color:var(--violet-hi)">Dana Cadangan (Contingency)</div>
+          <div class="bd-meta">~9% buffer · realokasi ke I&amp;D Fund bila tidak terpakai</div>
+        </div>
+        <div class="bd-num col-bln">—</div>
+        <div class="bd-num">—</div>
+        <div class="bd-num" style="color:var(--violet-hi)">20.000.000</div>
+      </div>
+
+      <div class="breakdown-row total">
+        <div class="bd-name strong" style="font-size:1.1rem">Total Budget Maksimum PT PIT</div>
+        <div class="bd-num col-bln">—</div>
+        <div class="bd-num">10 bulan</div>
+        <div class="bd-num lg" style="color:var(--primary-hi);font-size:1.2rem">219.500.000</div>
+      </div>
+    </div>
+
+    <!-- Monthly Chart -->
+    <div class="chart-card">
+      <div class="chart-head">
+        <div>
+          <span class="eyebrow primary">Monthly Distribution</span>
+          <div class="chart-title" style="margin-top:0.4rem">Distribusi budget bulanan</div>
+        </div>
+        <div class="chart-meta" id="chartScenarioLabel">Budget Maksimum · Rp Juta per bulan</div>
+      </div>
+
+      <div class="bars-container">
+        <div class="bars-axis">
+          <div class="axis-line"><span>30</span><span class="line"></span></div>
+          <div class="axis-line"><span>20</span><span class="line"></span></div>
+          <div class="axis-line"><span>10</span><span class="line"></span></div>
+          <div class="axis-line"><span>0</span><span class="line"></span></div>
+        </div>
+        <div class="bars" id="budgetBars"></div>
+      </div>
+
+      <div class="chart-legend">
+        <div class="legend-pill"><span class="dot primary"></span>Phase 1 — Requirement (M1–M3)</div>
+        <div class="legend-pill"><span class="dot amber"></span>Phase 2 — Development (M4–M7)</div>
+        <div class="legend-pill"><span class="dot violet"></span>Phase 3 — Go-Live (M8–M10)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PLAN ===== -->
+<section id="plan" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow violet">Implementation Plan · 10 Bulan</span>
+      <h1 class="display-xl">Rencana implementasi <span class="italic-accent">tiga fase, lima milestone</span>.</h1>
+      <p class="lead">Klik setiap milestone untuk melihat detail aktivitas dan deliverable. Sequential — Phase 1 selesai sebelum Phase 2, dan seterusnya. Setiap milestone memiliki acceptance criteria objektif.</p>
+    </div>
+
+    <!-- Gantt Timeline -->
+    <div class="gantt">
+      <div class="gantt-head">
+        <div>
+          <span class="eyebrow primary">Timeline Overview</span>
+          <div class="gantt-title" style="margin-top:0.4rem">Roadmap 10 bulan dalam satu pandangan</div>
+        </div>
+        <div class="chart-meta">M1 → M5 · 5 milestone, 3 fase</div>
+      </div>
+
+      <div class="gantt-grid">
+        <div class="gantt-months">
+          <div></div>
+          <div class="gantt-month">B1</div>
+          <div class="gantt-month">B2</div>
+          <div class="gantt-month">B3</div>
+          <div class="gantt-month">B4</div>
+          <div class="gantt-month">B5</div>
+          <div class="gantt-month">B6</div>
+          <div class="gantt-month">B7</div>
+          <div class="gantt-month">B8</div>
+          <div class="gantt-month">B9</div>
+          <div class="gantt-month">B10</div>
+        </div>
+
+        <div class="gantt-phase-band">
+          <div></div>
+          <div class="gantt-phase p1" style="grid-column: span 3">Phase 1 · Foundation</div>
+          <div class="gantt-phase p2" style="grid-column: span 4">Phase 2 · Build</div>
+          <div class="gantt-phase p3" style="grid-column: span 3">Phase 3 · Launch</div>
+        </div>
+
+        <div class="gantt-row">
+          <div class="gantt-label-cell">
+            <div class="gantt-label">M1 · Requirement Gathering</div>
+            <div class="gantt-sublabel">RG &amp; Design</div>
+          </div>
+          <div class="gantt-bar primary" style="grid-column: span 2" title="Bulan 1-2">M1</div>
+          <div class="gantt-empty" style="grid-column: span 8"></div>
+        </div>
+
+        <div class="gantt-row">
+          <div class="gantt-label-cell">
+            <div class="gantt-label">M2 · Budget Revision</div>
+            <div class="gantt-sublabel">Resource Planning</div>
+          </div>
+          <div class="gantt-empty" style="grid-column: span 2"></div>
+          <div class="gantt-bar sky" style="grid-column: span 1" title="Bulan 3">M2</div>
+          <div class="gantt-empty" style="grid-column: span 7"></div>
+        </div>
+
+        <div class="gantt-row">
+          <div class="gantt-label-cell">
+            <div class="gantt-label">M3 · Development</div>
+            <div class="gantt-sublabel">Config &amp; Build</div>
+          </div>
+          <div class="gantt-empty" style="grid-column: span 3"></div>
+          <div class="gantt-bar amber" style="grid-column: span 4" title="Bulan 4-7">M3 · Development &amp; Konfigurasi</div>
+          <div class="gantt-empty" style="grid-column: span 3"></div>
+        </div>
+
+        <div class="gantt-row">
+          <div class="gantt-label-cell">
+            <div class="gantt-label">M4 · UAT &amp; Training</div>
+            <div class="gantt-sublabel">User Acceptance</div>
+          </div>
+          <div class="gantt-empty" style="grid-column: span 7"></div>
+          <div class="gantt-bar violet" style="grid-column: span 2" title="Bulan 8-9">M4</div>
+          <div class="gantt-empty" style="grid-column: span 1"></div>
+        </div>
+
+        <div class="gantt-row">
+          <div class="gantt-label-cell">
+            <div class="gantt-label">M5 · Go-Live &amp; Hypercare</div>
+            <div class="gantt-sublabel">Launch</div>
+          </div>
+          <div class="gantt-empty" style="grid-column: span 9"></div>
+          <div class="gantt-bar rose" style="grid-column: span 1" title="Bulan 10">M5</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 1 -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <div class="phase-marker">i</div>
+        <div class="phase-info">
+          <div class="phase-name">Requirement Gathering &amp; Resource Planning</div>
+          <div class="phase-meta">Phase 1 · 3 bulan · M1–M2</div>
+        </div>
+      </div>
+
+      <div class="milestone" data-expand>
+        <div class="milestone-top">
+          <div class="milestone-id-wrap">
+            <div class="milestone-id">M1</div>
+            <div class="milestone-month">Bulan 1–2</div>
+          </div>
+          <div class="milestone-main">
+            <div class="milestone-title">Requirement Gathering &amp; Design</div>
+            <span class="milestone-dur">2 bulan · Budget Rp 9,5 Jt/bln</span>
+            <div class="milestone-preview">
+              <span class="preview-chip">6 Aktivitas</span>
+              <span class="preview-chip">6 Deliverable</span>
+            </div>
+          </div>
+          <div class="milestone-toggle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="milestone-body">
+          <div class="milestone-content">
+            <div class="task-section">
+              <div class="task-section-label">Aktivitas Utama</div>
+              <ul class="task-list">
+                <li><span>Kick-off meeting &amp; stakeholder alignment dengan semua manager terkait</span></li>
+                <li><span>Business Process Documentation oleh CMI Manager (Business Process Principal)</span></li>
+                <li><span>Gap Analysis As-Is vs To-Be untuk seluruh proses bisnis yang akan di-cover</span></li>
+                <li><span>Penyusunan BRD (Business Requirements Document) &amp; SRS (System Requirements Specification)</span></li>
+                <li><span>Scope Lock &amp; sign-off formal dari BOD untuk melanjutkan ke development</span></li>
+                <li><span>Initial risk register &amp; project charter draft</span></li>
+              </ul>
+            </div>
+            <div class="task-section">
+              <div class="task-section-label">Deliverables</div>
+              <div class="deliverables-list">
+                <span class="deliv">BRD</span>
+                <span class="deliv">SRS</span>
+                <span class="deliv">Gap Analysis</span>
+                <span class="deliv">Scope Lock</span>
+                <span class="deliv">Risk Register</span>
+                <span class="deliv">Project Charter Draft</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="milestone violet" data-expand>
+        <div class="milestone-top">
+          <div class="milestone-id-wrap">
+            <div class="milestone-id">M2</div>
+            <div class="milestone-month">Bulan 3</div>
+          </div>
+          <div class="milestone-main">
+            <div class="milestone-title">Budget Revision &amp; Resource Planning</div>
+            <span class="milestone-dur">1 bulan · Budget Rp 9,5 Jt/bln</span>
+            <div class="milestone-preview">
+              <span class="preview-chip">6 Aktivitas</span>
+              <span class="preview-chip">5 Deliverable</span>
+            </div>
+          </div>
+          <div class="milestone-toggle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="milestone-body">
+          <div class="milestone-content">
+            <div class="task-section">
+              <div class="task-section-label">Aktivitas Utama</div>
+              <ul class="task-list">
+                <li><span>Revisi Layer 2 budget berdasarkan scope aktual dari hasil Requirement Gathering</span></li>
+                <li><span>Konfirmasi BOD atas revised budget sebelum development dimulai</span></li>
+                <li><span>Rekrut atau secure Development Resource (engagement model fleksibel)</span></li>
+                <li><span>Finalisasi Project Charter dengan scope, timeline, dan tim yang sudah dikunci</span></li>
+                <li><span>Setup development environment &amp; tooling</span></li>
+                <li><span>Resource matrix &amp; RACI chart untuk seluruh proyek</span></li>
+              </ul>
+            </div>
+            <div class="task-section">
+              <div class="task-section-label">Deliverables</div>
+              <div class="deliverables-list">
+                <span class="deliv">Updated Budget</span>
+                <span class="deliv">Resource Matrix</span>
+                <span class="deliv">Project Charter Final</span>
+                <span class="deliv">RACI Chart</span>
+                <span class="deliv">Dev Environment Setup</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <div class="phase-marker amber">ii</div>
+        <div class="phase-info">
+          <div class="phase-name">Development &amp; Configuration</div>
+          <div class="phase-meta">Phase 2 · 4 bulan · M3</div>
+        </div>
+      </div>
+
+      <div class="milestone amber" data-expand>
+        <div class="milestone-top">
+          <div class="milestone-id-wrap">
+            <div class="milestone-id">M3</div>
+            <div class="milestone-month">Bulan 4–7</div>
+          </div>
+          <div class="milestone-main">
+            <div class="milestone-title">Development &amp; Konfigurasi</div>
+            <span class="milestone-dur">4 bulan · Budget Rp 16–17,5 Jt/bln</span>
+            <div class="milestone-preview">
+              <span class="preview-chip">8 Aktivitas</span>
+              <span class="preview-chip">7 Deliverable</span>
+            </div>
+          </div>
+          <div class="milestone-toggle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="milestone-body">
+          <div class="milestone-content">
+            <div class="task-section">
+              <div class="task-section-label">Aktivitas Utama</div>
+              <ul class="task-list">
+                <li><span>Technical architecture design &amp; database schema finalization</span></li>
+                <li><span>Odoo 18 module configuration: 8 modul utama (Accounting, Inventory, Purchase, Sales, Employee, CRM, Field Service, Helpdesk)</span></li>
+                <li><span>Custom development &amp; integration sesuai gap analysis hasil M1</span></li>
+                <li><span>Unit testing per module dengan coverage minimum yang disepakati</span></li>
+                <li><span>Data migration preparation &amp; mapping dari sistem lama</span></li>
+                <li><span>UAT environment setup yang siap digunakan oleh end-user</span></li>
+                <li><span>Knowledge Transfer dimulai paralel — dokumentasi real-time di Wiki</span></li>
+                <li><span>Change Management Plan disusun oleh CMI Manager untuk persiapan adoption</span></li>
+              </ul>
+            </div>
+            <div class="task-section">
+              <div class="task-section-label">Deliverables</div>
+              <div class="deliverables-list">
+                <span class="deliv">Technical Design</span>
+                <span class="deliv">Module Config Report</span>
+                <span class="deliv">Unit Test Results</span>
+                <span class="deliv">Data Migration Plan</span>
+                <span class="deliv">Wiki Documentation</span>
+                <span class="deliv">Runbook Draft</span>
+                <span class="deliv">Change Mgmt Plan</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <div class="phase-marker violet">iii</div>
+        <div class="phase-info">
+          <div class="phase-name">UAT, Training, Go-Live &amp; Hypercare</div>
+          <div class="phase-meta">Phase 3 · 3 bulan · M4–M5</div>
+        </div>
+      </div>
+
+      <div class="milestone violet" data-expand>
+        <div class="milestone-top">
+          <div class="milestone-id-wrap">
+            <div class="milestone-id">M4</div>
+            <div class="milestone-month">Bulan 8–9</div>
+          </div>
+          <div class="milestone-main">
+            <div class="milestone-title">UAT &amp; Training</div>
+            <span class="milestone-dur">2 bulan · Budget Rp 12–14 Jt/bln</span>
+            <div class="milestone-preview">
+              <span class="preview-chip">6 Aktivitas</span>
+              <span class="preview-chip">5 Deliverable</span>
+            </div>
+          </div>
+          <div class="milestone-toggle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="milestone-body">
+          <div class="milestone-content">
+            <div class="task-section">
+              <div class="task-section-label">Aktivitas Utama</div>
+              <ul class="task-list">
+                <li><span>UAT Plan &amp; Test Case preparation berdasarkan business scenarios real</span></li>
+                <li><span>UAT Execution dengan end-user dari setiap departemen</span></li>
+                <li><span>Bug tracking &amp; resolution dengan prioritisasi yang jelas</span></li>
+                <li><span>End-user training per departemen dengan hands-on workshop</span></li>
+                <li><span>Penyusunan training material &amp; user manual</span></li>
+                <li><span>Data migration dry-run untuk validasi sebelum cutover sebenarnya</span></li>
+              </ul>
+            </div>
+            <div class="task-section">
+              <div class="task-section-label">Deliverables</div>
+              <div class="deliverables-list">
+                <span class="deliv">UAT Report</span>
+                <span class="deliv">Bug Tracker</span>
+                <span class="deliv">Training Material</span>
+                <span class="deliv">User Manual</span>
+                <span class="deliv">Migration Dry-Run</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="milestone rose" data-expand>
+        <div class="milestone-top">
+          <div class="milestone-id-wrap">
+            <div class="milestone-id">M5</div>
+            <div class="milestone-month">Bulan 10</div>
+          </div>
+          <div class="milestone-main">
+            <div class="milestone-title">Go-Live &amp; Hypercare</div>
+            <span class="milestone-dur">1 bulan · Budget Rp 11,5 Jt/bln</span>
+            <div class="milestone-preview">
+              <span class="preview-chip">6 Aktivitas</span>
+              <span class="preview-chip">5 Deliverable</span>
+            </div>
+          </div>
+          <div class="milestone-toggle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="milestone-body">
+          <div class="milestone-content">
+            <div class="task-section">
+              <div class="task-section-label">Aktivitas Utama</div>
+              <ul class="task-list">
+                <li><span>Final data migration &amp; cutover ke sistem baru</span></li>
+                <li><span>Parallel run sistem lama dan baru untuk validasi</span></li>
+                <li><span>Go-Live execution dengan support intensif</span></li>
+                <li><span>Post go-live monitoring untuk early issue detection</span></li>
+                <li><span>Hypercare support dengan response time yang ketat</span></li>
+                <li><span>Post Go-Live report &amp; project closure</span></li>
+              </ul>
+            </div>
+            <div class="task-section">
+              <div class="task-section-label">Deliverables</div>
+              <div class="deliverables-list">
+                <span class="deliv">Cutover Plan</span>
+                <span class="deliv">Post Go-Live Report</span>
+                <span class="deliv">Runbook Final</span>
+                <span class="deliv">Project Closure Doc</span>
+                <span class="deliv">Handover Documentation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GOVERNANCE ===== -->
+<section id="governance" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow violet">Project Governance</span>
+      <h1 class="display-xl">Struktur otoritas dan <span class="italic-accent">alur komunikasi</span> proyek.</h1>
+      <p class="lead">Lima prinsip eksekusi yang melandasi struktur ini, didukung pemisahan peran yang jelas dan SLA responsivitas yang mengikat. Tujuannya: BOD punya visibility strategic, PL punya otoritas eksekusi, dan tim punya fokus untuk deliver — tanpa konflik dan tanpa surprise.</p>
+    </div>
+
+    <div class="section-divider" style="margin-top:0">
+      <span class="label">Project Principles</span>
+      <span class="badge">Filosofi eksekusi</span>
+      <div class="line"></div>
+    </div>
+
+    <p class="principles-intro">
+      Lima prinsip yang melandasi seluruh struktur governance proyek ini. Bukan aturan untuk membatasi, melainkan kesepakatan bersama untuk memastikan eksekusi yang efektif dan kepercayaan yang sehat antara BOD, Sponsor, dan Project Leader.
+    </p>
+
+    <div class="principles-grid">
+      <div class="principle">
+        <div class="principle-glow"></div>
+        <div class="principle-num">i</div>
+        <div class="principle-name">Empowered Execution</div>
+        <div class="principle-desc">Project Leader diberi otoritas penuh dalam koridor budget &amp; scope. BOD fokus pada strategic decisions, PL fokus pada eksekusi.</div>
+      </div>
+      <div class="principle sky">
+        <div class="principle-glow"></div>
+        <div class="principle-num">ii</div>
+        <div class="principle-name">Macro Oversight, Not Micro Control</div>
+        <div class="principle-desc">BOD &amp; Sponsor mengawasi via milestone &amp; burn rate — bukan task harian atau keputusan teknis. Trust the process, verify the outcome.</div>
+      </div>
+      <div class="principle amber">
+        <div class="principle-glow"></div>
+        <div class="principle-num">iii</div>
+        <div class="principle-name">Single-Channel Discipline</div>
+        <div class="principle-desc">Komunikasi terstruktur via PL bukan untuk membatasi BOD, tapi untuk menjamin tim fokus dan tidak terdistraksi oleh request paralel.</div>
+      </div>
+      <div class="principle violet">
+        <div class="principle-glow"></div>
+        <div class="principle-num">iv</div>
+        <div class="principle-name">Transparent Reporting</div>
+        <div class="principle-desc">Visibility penuh ke BOD via monthly report, milestone review, dan early warning. Tidak ada surprise — semua terdokumentasi &amp; traceable.</div>
+      </div>
+      <div class="principle rose">
+        <div class="principle-glow"></div>
+        <div class="principle-num">v</div>
+        <div class="principle-name">Constructive Escalation</div>
+        <div class="principle-desc">Hambatan dilaporkan formal, bukan via shortcut. Konflik diselesaikan di forum yang tepat dengan dokumentasi yang jelas.</div>
+      </div>
+    </div>
+
+    <!-- Org Chart -->
+    <div class="section-divider">
+      <span class="label">Struktur Organisasi Proyek</span>
+      <div class="line"></div>
+    </div>
+
+    <div class="org-chart">
+      <div class="org-row">
+        <div class="org-card">
+          <div class="org-role">Project Owner</div>
+          <div class="org-name">BOD yang Ditunjuk</div>
+          <div class="org-desc">Ultimate decision maker. Final arbiter untuk dispute. Approve budget &amp; perubahan signifikan.</div>
+        </div>
+      </div>
+      <div class="org-line"></div>
+      <div class="org-row">
+        <div class="org-card violet">
+          <div class="org-role">Project Sponsor &amp; BPP</div>
+          <div class="org-name">CMI Manager</div>
+          <div class="org-desc">Verifikasi deliverable, dokumentasi proses bisnis, gap analysis &amp; sign-off, change management, serta eskalasi ke BOD bila diperlukan.</div>
+        </div>
+      </div>
+      <div class="org-line"></div>
+      <div class="org-row">
+        <div class="org-card amber">
+          <div class="org-role">Project Leader</div>
+          <div class="org-name">Novaldi</div>
+          <div class="org-desc">Otoritas penuh atas keputusan teknis, operasional, dan budget. Semua arahan ke tim melalui PL.</div>
+        </div>
+      </div>
+      <div class="org-line"></div>
+      <div class="org-row">
+        <div class="org-card muted">
+          <div class="org-role">Tim Proyek</div>
+          <div class="org-name">Dev &amp; Support Resource</div>
+          <div class="org-desc">Menerima arahan operasional hanya dari Project Leader.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLA Cards -->
+    <div class="section-divider">
+      <span class="label">Response Time SLA</span>
+      <div class="line"></div>
+    </div>
+
+    <div class="sla-grid">
+      <div class="sla-card">
+        <div class="sla-num">5<span class="unit">HK</span></div>
+        <div class="sla-label">Deliverable Review</div>
+        <div class="sla-desc">Project Sponsor merespons deliverable dalam 5 hari kerja. Lewat dari itu berlaku Deemed Approval otomatis.</div>
+      </div>
+      <div class="sla-card amber">
+        <div class="sla-num">3<span class="unit">HK</span></div>
+        <div class="sla-label">Stakeholder Response</div>
+        <div class="sla-desc">Stakeholder merespons permintaan informasi atau dokumen dari Project Leader.</div>
+      </div>
+      <div class="sla-card violet">
+        <div class="sla-num">5<span class="unit">HK</span></div>
+        <div class="sla-label">Eskalasi BOD</div>
+        <div class="sla-desc">BOD merespons eskalasi dari Project Leader atau Project Sponsor sebagai final arbiter.</div>
+      </div>
+    </div>
+
+    <!-- Communication Matrix -->
+    <div class="section-divider">
+      <span class="label">Communication Matrix</span>
+      <div class="line"></div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Komunikasi</th><th>Dari</th><th>Kepada</th><th>Frekuensi</th><th>Channel</th><th>SLA</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="cell-strong">Monthly Progress Report</span></td><td>Project Leader</td><td>Project Sponsor &amp; BOD</td><td>Bulanan</td><td>Email + Dokumen</td><td>—</td></tr>
+          <tr><td><span class="cell-strong">Deliverable Submission</span></td><td>Project Leader</td><td>Project Sponsor</td><td>Per Milestone</td><td>Dokumen Formal</td><td><span class="tag amber">5 HK</span></td></tr>
+          <tr><td><span class="cell-strong">Eskalasi Hambatan</span></td><td>Project Leader</td><td>Sponsor → BOD</td><td>Saat terjadi</td><td>Email Formal</td><td><span class="tag amber">3–5 HK</span></td></tr>
+          <tr><td><span class="cell-strong">Milestone Review</span></td><td>Project Leader</td><td>Sponsor &amp; BOD</td><td>Per Milestone</td><td>Meeting + Dokumen</td><td><span class="tag amber">5 HK</span></td></tr>
+          <tr><td><span class="cell-strong">Budget Early Warning</span></td><td>Project Leader</td><td>Sponsor &amp; BOD</td><td>Saat &gt;80% ceiling</td><td>Email Alert</td><td><span class="tag rose">Segera</span></td></tr>
+          <tr><td><span class="cell-strong">Change Request</span></td><td>Stakeholder / PL</td><td>Sponsor → BOD</td><td>Saat ada perubahan</td><td>Form Formal</td><td><span class="tag amber">5 HK</span></td></tr>
+          <tr><td><span class="cell-strong">Tim Proyek Briefing</span></td><td>Project Leader</td><td>Tim Proyek</td><td>Weekly</td><td>Meeting / Chat</td><td>—</td></tr>
+          <tr><td><span class="cell-strong">Business Process Input</span></td><td>CMI Manager (BPP)</td><td>Project Leader</td><td>Per kebutuhan RG</td><td>Dokumen / Meeting</td><td><span class="tag amber">3 HK</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Constructive Callout -->
+    <div class="callout">
+      <div class="callout-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+      </div>
+      <span class="callout-eyebrow">Prinsip iii — Single-Channel Discipline</span>
+      <div class="callout-title">Mengapa semua arahan ke tim proyek melalui Project Leader.</div>
+      <div class="callout-text">
+        Single-channel communication bukan tentang membatasi BOD atau Sponsor — ini tentang melindungi fokus tim dan menjamin eksekusi yang konsisten. Ketika tim hanya menerima arahan dari satu sumber, mereka bisa bekerja tanpa konflik prioritas dan ambiguitas. BOD &amp; Sponsor tetap punya visibility penuh via monthly report, milestone review, dan dapat eskalasi kapan pun melalui PL.
+        <br><br>
+        Hambatan organisasi seperti resistensi stakeholder atau dinamika internal adalah ranah Project Sponsor &amp; BOD untuk diselesaikan — bukan beban PL. Pembagian tanggung jawab ini membuat semua pihak bisa fokus pada area yang menjadi kekuatan masing-masing.
+      </div>
+      <div class="callout-benefits">
+        <div class="benefit">
+          <div class="benefit-check">✓</div>
+          <div class="benefit-text"><strong>Untuk BOD &amp; Sponsor</strong>Visibility strategic tanpa harus terlibat di detail operasional. Keputusan besar tetap di tangan BOD.</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-check">✓</div>
+          <div class="benefit-text"><strong>Untuk Tim Proyek</strong>Fokus penuh pada eksekusi tanpa terdistraksi request paralel atau prioritas yang berkonflik.</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-check">✓</div>
+          <div class="benefit-text"><strong>Untuk Project Leader</strong>Akuntabilitas yang jelas — PL bisa diukur secara fair berdasarkan deliverable, bukan dinamika eksternal.</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-check">✓</div>
+          <div class="benefit-text"><strong>Untuk Proyek</strong>Eksekusi cepat &amp; efisien. Tidak ada waktu terbuang untuk meresolusi konflik prioritas.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RISK ===== -->
+<section id="risk" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow rose">Risk Mitigation</span>
+      <h1 class="display-xl">Manajemen risiko dengan <span class="italic-accent">akuntabilitas yang jelas</span>.</h1>
+      <p class="lead">Delapan risiko teridentifikasi sebelum proyek dimulai — empat high, empat medium. Setiap risiko punya mitigation strategy konkret dan penanggung jawab spesifik. Risk register diupdate per milestone.</p>
+    </div>
+
+    <div class="risk-summary-grid">
+      <div class="risk-sum high">
+        <div class="risk-sum-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="risk-sum-num">4</div>
+        <div class="risk-sum-label">High Risk</div>
+        <div class="risk-sum-desc">Memerlukan mitigation aktif &amp; reporting periodik. 3 di-handle PL, 1 di-handle Sponsor &amp; BOD.</div>
+      </div>
+      <div class="risk-sum med">
+        <div class="risk-sum-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="risk-sum-num">4</div>
+        <div class="risk-sum-label">Medium Risk</div>
+        <div class="risk-sum-desc">Sudah ada strategy yang jelas, monitored di milestone review. 2 di-handle PL, 2 di-handle CMI Manager.</div>
+      </div>
+      <div class="risk-sum total">
+        <div class="risk-sum-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="risk-sum-num">8</div>
+        <div class="risk-sum-label">Total Identified</div>
+        <div class="risk-sum-desc">Setiap risiko punya penanggung jawab spesifik. Risk register diupdate per milestone review.</div>
+      </div>
+    </div>
+
+    <!-- Risk Matrix -->
+    <div class="risk-matrix-wrap">
+      <div class="risk-matrix-head">
+        <div>
+          <span class="eyebrow rose">Risk Matrix</span>
+          <div class="risk-matrix-title" style="margin-top:0.4rem">Likelihood × Impact</div>
+        </div>
+        <div class="chart-meta">8 risiko teridentifikasi · update per milestone</div>
+      </div>
+
+      <div class="risk-matrix">
+        <div class="rm-corner"></div>
+        <div class="rm-x-label">Low Impact</div>
+        <div class="rm-x-label">Medium Impact</div>
+        <div class="rm-x-label">High Impact</div>
+
+        <div class="rm-y-label">High Likelihood</div>
+        <div class="rm-cell zone-med"><span class="rm-zone-label">Med</span></div>
+        <div class="rm-cell zone-high">
+          <span class="rm-zone-label">High</span>
+          <div class="rm-risk r-med">BP Principal Delay</div>
+          <div class="rm-risk r-med">User Adoption</div>
+        </div>
+        <div class="rm-cell zone-high">
+          <span class="rm-zone-label">Critical</span>
+          <div class="rm-risk r-high">Scope Creep</div>
+          <div class="rm-risk r-high">Hambatan Organisasi</div>
+        </div>
+
+        <div class="rm-y-label">Medium Likelihood</div>
+        <div class="rm-cell zone-low"><span class="rm-zone-label">Low</span></div>
+        <div class="rm-cell zone-med">
+          <span class="rm-zone-label">Med</span>
+          <div class="rm-risk r-med">Technical Complexity</div>
+        </div>
+        <div class="rm-cell zone-high">
+          <span class="rm-zone-label">High</span>
+          <div class="rm-risk r-high">Budget Overrun</div>
+          <div class="rm-risk r-high">Single Point of Failure</div>
+        </div>
+
+        <div class="rm-y-label">Low Likelihood</div>
+        <div class="rm-cell zone-low"><span class="rm-zone-label">Low</span></div>
+        <div class="rm-cell zone-low"><span class="rm-zone-label">Low</span></div>
+        <div class="rm-cell zone-med">
+          <span class="rm-zone-label">Med</span>
+          <div class="rm-risk r-med">Data Migration Failure</div>
+        </div>
+      </div>
+
+      <p style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border);font-size:0.875rem;color:var(--text-2);line-height:1.65;font-style:italic;">Posisi risiko di matrix dievaluasi ulang di setiap milestone review. Risk yang sudah dimitigasi efektif akan turun ke kuadran yang lebih rendah.</p>
+    </div>
+
+    <!-- Risk Detail Table -->
+    <div class="section-divider">
+      <span class="label">Detail Risk Register</span>
+      <div class="line"></div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th style="width:22%">Risiko</th><th style="width:8%">Level</th><th>Mitigation Strategy</th><th style="width:22%">Penanggung Jawab</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="cell-strong">Scope Creep</span></td><td><span class="tag rose">High</span></td><td>Scope Lock Document di M1 dengan formal Change Request process. Setiap CR diapprove BOD dengan cost &amp; timeline impact yang dilampirkan. Scope creep yang dipaksakan tanpa CR tidak dibebankan ke Budget Maksimum.</td><td><span class="tag primary">Project Leader</span></td></tr>
+          <tr><td><span class="cell-strong">Budget Overrun</span></td><td><span class="tag rose">High</span></td><td>Budget Maksimum Rp 219,5 Jt sebagai batas absolut. Monthly burn rate reporting ke BOD. Early warning trigger jika realisasi melebihi 80% dari Budget Maksimum. Dana Cadangan dikelola disiplin dengan dokumentasi.</td><td><span class="tag primary">Project Leader</span></td></tr>
+          <tr><td><span class="cell-strong">Single Point of Failure</span></td><td><span class="tag rose">High</span></td><td>Knowledge Transfer real-time di Wiki, Runbook &amp; SOP, Code Repository di Git, Support Dev sebagai backup yang di-mentoring sejak M3.</td><td><span class="tag primary">Project Leader</span></td></tr>
+          <tr><td><span class="cell-strong">Hambatan Organisasi</span></td><td><span class="tag rose">High</span></td><td>PL melaporkan secara formal &amp; terdokumentasi. Penyelesaian adalah tanggung jawab Project Sponsor &amp; BOD dalam SLA 5 hari kerja.</td><td><span class="tag amber">Sponsor &amp; BOD</span></td></tr>
+          <tr><td><span class="cell-strong">BP Principal Delay</span></td><td><span class="tag amber">Medium</span></td><td>CMI Manager memiliki deliverable formal dengan deadline tertulis di PKS. Keterlambatan tidak dibebankan ke PL — traceable dan visible ke BOD.</td><td><span class="tag violet">CMI Manager</span></td></tr>
+          <tr><td><span class="cell-strong">Data Migration Failure</span></td><td><span class="tag amber">Medium</span></td><td>Data audit di M1, migration dry-run di M3 dengan rollback plan, dan parallel run di M5 sebelum cutover ke production.</td><td><span class="tag primary">Project Leader</span></td></tr>
+          <tr><td><span class="cell-strong">User Adoption Resistance</span></td><td><span class="tag amber">Medium</span></td><td>Change Management Plan disusun oleh CMI Manager. Training mulai M4 dengan hands-on workshop. Feedback loop dan iterasi berkelanjutan.</td><td><span class="tag violet">CMI Manager</span></td></tr>
+          <tr><td><span class="cell-strong">Technical Complexity</span></td><td><span class="tag amber">Medium</span></td><td>Requirement Gathering mendalam sebelum commitment Layer 2. Staging environment terpisah. Architecture review di M2 sebelum development.</td><td><span class="tag primary">Project Leader</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOCS ===== -->
+<section id="docs" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow sky">Legal Framework</span>
+      <h1 class="display-xl">Outline <span class="italic-accent">PKS &amp; NDA</span> sebagai dasar formal proyek.</h1>
+      <p class="lead">Framework perjanjian yang melindungi semua pihak — perusahaan dan Project Leader. Dokumen formal yang mendefinisikan otoritas, akuntabilitas, dan kondisi kerja yang fair untuk eksekusi proyek PT PIT. Disusun untuk ditandatangani pada Minggu 1 sebelum kick-off proyek.</p>
+    </div>
+
+    <div class="docs-grid">
+      <div class="doc">
+        <div class="doc-head">
+          <div class="doc-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="doc-head-text">
+            <div class="doc-eyebrow">Document 01</div>
+            <div class="doc-title">Perjanjian Kerja Sama</div>
+          </div>
+        </div>
+        <div class="doc-body">
+          <div class="clause"><span class="clause-num">P1</span><div>Definisi — Budget Maksimum, Penanggung Jawab Budget, Innovation &amp; Development Fund, Interferensi, Deemed Approval, Hambatan Organisasi</div></div>
+          <div class="clause"><span class="clause-num">P2</span><div>Latar Belakang &amp; Dasar Penugasan dari BOD</div></div>
+          <div class="clause"><span class="clause-num">P3</span><div>Ruang Lingkup &amp; Otoritas Project Leader — operasional, budget, tim</div></div>
+          <div class="clause"><span class="clause-num">P4</span><div>Struktur Governance — Project Owner, Sponsor, Business Process Principal</div></div>
+          <div class="clause"><span class="clause-num">P5</span><div>Milestone, Deliverable &amp; Kriteria Acceptance yang objektif dan terukur</div></div>
+          <div class="clause"><span class="clause-num">P6</span><div>Kompensasi &amp; Incentive — total Rp 95 Jt PIT dengan monthly flat payment Rp 9,5 Jt × 10 bulan</div></div>
+          <div class="clause"><span class="clause-num">P7</span><div>Kewajiban Para Pihak — termasuk kondisi kerja yang kondusif</div></div>
+          <div class="clause"><span class="clause-num">P8</span><div>Anti-Interferensi &amp; Tanggung Jawab Hambatan Organisasi</div></div>
+          <div class="clause"><span class="clause-num">P9</span><div>Terminasi — dengan / tanpa cause, kompensasi terminasi yang fair</div></div>
+          <div class="clause"><span class="clause-num">P10</span><div>Force Majeure, Penyelesaian Sengketa, Ketentuan Umum</div></div>
+          <div class="clause"><span class="clause-num">P11</span><div>Scope Lock &amp; Change Request — scope dikunci di akhir M1; perubahan post-lock memerlukan CR formal dengan implikasi budget atau timeline terpisah dari Budget Maksimum</div></div>
+          <div class="clause"><span class="clause-num">P12</span><div>External Cost Pass-Through — biaya di luar kendali PL yang tidak dapat diprediksi (kenaikan license vendor, regulasi baru) dievaluasi terpisah dan ditanggung perusahaan di luar Budget Maksimum</div></div>
+        </div>
+      </div>
+
+      <div class="doc violet">
+        <div class="doc-head">
+          <div class="doc-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="doc-head-text">
+            <div class="doc-eyebrow">Document 02</div>
+            <div class="doc-title">Non-Disclosure Agreement</div>
+          </div>
+        </div>
+        <div class="doc-body">
+          <div class="clause"><span class="clause-num">P1</span><div>Definisi Informasi Rahasia</div></div>
+          <div class="clause"><span class="clause-num">P2</span><div>Informasi Rahasia Perusahaan — data, proses, konfigurasi ERP, SOP</div></div>
+          <div class="clause"><span class="clause-num">P3</span><div>Informasi Rahasia Project Leader — PKS detail, metodologi, penilaian internal</div></div>
+          <div class="clause"><span class="clause-num">P4</span><div>Kewajiban Kerahasiaan — dua arah, setara untuk kedua pihak</div></div>
+          <div class="clause"><span class="clause-num">P5</span><div>Pengecualian — informasi publik, perintah hukum dengan notifikasi</div></div>
+          <div class="clause"><span class="clause-num">P6</span><div>Perlindungan Khusus PL — PKS tidak boleh dibocorkan ke pihak internal lain</div></div>
+          <div class="clause"><span class="clause-num">P7</span><div>Durasi — berlaku selama proyek dan 3 tahun setelah selesai atau terminasi</div></div>
+          <div class="clause"><span class="clause-num">P8</span><div>Konsekuensi Pelanggaran — dua arah, hak ganti rugi</div></div>
+          <div class="clause"><span class="clause-num">P9</span><div>Pengembalian Informasi pasca proyek selesai</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Komitmen Project Leader -->
+    <div class="section-divider">
+      <span class="label">Komitmen Project Leader</span>
+      <span class="badge">Akuntabilitas eksekusi</span>
+      <div class="line"></div>
+    </div>
+
+    <div class="commitments">
+      <div class="commitments-head">
+        <div class="commitments-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.65 0 3.2.45 4.53 1.22"/></svg>
+        </div>
+        <div>
+          <span class="eyebrow primary">Komitmen Eksekusi</span>
+          <h2 class="title-lg" style="margin-top:0.4rem">Komitmen Project Leader dalam Pengelolaan Budget Maksimum</h2>
+        </div>
+      </div>
+
+      <div class="commitments-grid">
+        <div class="commitment">
+          <div class="commitment-num">i</div>
+          <div class="commitment-content">
+            <div class="commitment-title">Pengelolaan Disiplin atas Budget Maksimum</div>
+            <div class="commitment-desc">Memastikan keseluruhan proyek dieksekusi dalam batas Rp 219,5 Jt dengan tracking penyerapan anggaran yang transparan dan terdokumentasi.</div>
+          </div>
+        </div>
+        <div class="commitment">
+          <div class="commitment-num">ii</div>
+          <div class="commitment-content">
+            <div class="commitment-title">Reporting Bulanan yang Konsisten</div>
+            <div class="commitment-desc">Monthly progress report dan tingkat penyerapan anggaran akan disampaikan ke BOD tanpa terkecuali, dengan format yang konsisten dan terstruktur.</div>
+          </div>
+        </div>
+        <div class="commitment">
+          <div class="commitment-num">iii</div>
+          <div class="commitment-content">
+            <div class="commitment-title">Eskalasi Tepat Waktu</div>
+            <div class="commitment-desc">Setiap risiko material yang teridentifikasi akan dieskalasi secara formal dalam SLA 3 hari kerja, tanpa menunggu issue menjadi krisis.</div>
+          </div>
+        </div>
+        <div class="commitment">
+          <div class="commitment-num">iv</div>
+          <div class="commitment-content">
+            <div class="commitment-title">Reinvestasi ke Innovation &amp; Development Fund</div>
+            <div class="commitment-desc">Penghematan yang dihasilkan akan dialokasikan untuk inisiatif improvement berkelanjutan, dengan visibility &amp; approval BOD atas setiap inisiatif.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Langkah Selanjutnya -->
+    <div class="section-divider">
+      <span class="label">Langkah Selanjutnya</span>
+      <span class="badge">Roadmap pasca dokumen ini</span>
+      <div class="line"></div>
+    </div>
+
+    <div class="next-steps">
+      <div class="next-steps-head">
+        <div class="next-steps-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div>
+          <span class="eyebrow violet">Next Steps</span>
+          <h2 class="title-lg" style="margin-top:0.4rem">Tahapan pasca dokumen Project Roadmap</h2>
+        </div>
+      </div>
+
+      <div class="timeline-list">
+        <div class="timeline-item">
+          <div class="timeline-when">27 Mei 2026</div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">Finalisasi PKS &amp; NDA Project Leader</div>
+            <div class="timeline-desc">Penandatanganan dokumen formal yang melandasi penugasan dan kerahasiaan informasi proyek.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-when">4 Juni 2026</div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">Kick-off Meeting dengan Seluruh Stakeholder</div>
+            <div class="timeline-desc">Penjelasan struktur proyek, otoritas PL, mekanisme komunikasi, dan Commitment Letter dari setiap manager terkait.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-when">11 Juni 2026</div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">Memulai M1 — Requirement Gathering</div>
+            <div class="timeline-desc">Business Process Documentation, Gap Analysis, dan penyusunan BRD &amp; SRS untuk validasi scope.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-when">14 Agustus 2026</div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">Requirement Gathering Sign-off & Budget Revision Review</div>
+            <div class="timeline-desc">Formal closure M1: BRD, SRS, Gap Analysis, Scope Lock, Risk Register, dan Project Charter Draft diverifikasi PL dan disubmit ke BOD untuk validasi final. Bersamaan, alokasi Layer 2 direvisi berdasarkan scope aktual. BOD mengkonfirmasi budget revision dan menyetujui distribusi Budget Layer 2 sebelum development dimulai.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-when">Setiap Bulan</div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">Monthly Progress Report ke BOD</div>
+            <div class="timeline-desc">Update progress, tingkat penyerapan anggaran, risk register, dan early warning bila ada deviasi material.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-when">Per Milestone</div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">Milestone Review Formal</div>
+            <div class="timeline-desc">Presentasi deliverable, evaluasi terhadap acceptance criteria, dan formalisasi closure setiap milestone.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grand Total — Reframed -->
+    <div class="grand-total">
+      <div class="gt-main">
+        <div class="gt-eyebrow">Budget Maksimum — PT PIT</div>
+        <div class="gt-amount">Rp 219.500.000</div>
+        <div class="gt-meta">Target Eksekusi: <strong>Rp 188.700.000</strong> · Penghematan Rp 30,8 Jt → Innovation &amp; Development Fund</div>
+      </div>
+      <div class="gt-side">
+        <div class="gt-eyebrow">Status Persetujuan</div>
+        <div class="gt-side-amount">✓ Disetujui BOD</div>
+        <div class="gt-side-note">Budget dikelola sepenuhnya oleh Project Leader sebagai Penanggung Jawab Budget. Layer 2 alokasinya disesuaikan post-RG. Penghematan dari efisiensi &amp; Dana Cadangan direlokasi ke Innovation &amp; Development Fund untuk improvement berkelanjutan.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+<script src="pit-erp.js"></script>
+</body>
+</html>
